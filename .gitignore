@@ -1,5 +1,7 @@
-/init.py
-/test.py
-/config.ini
+__pycache__
+test.py
+config.ini
 
+db.sqlite3
 
+mysite/config.ini
