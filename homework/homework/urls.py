@@ -6,7 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("quotes.urls")),
     path('author/', include("authors.urls")),
-    # path('author/<int:page>', views.main, name = "root_paginate"),
+    path('tag/', include("tags.urls")),
     path('users/', include("users.urls")),
 
 ]
