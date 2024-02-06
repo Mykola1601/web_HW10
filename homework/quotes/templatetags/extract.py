@@ -35,20 +35,6 @@ register.filter('tags', get_tags)
 register.filter('author', get_author)
 
 
-            # <small class="author" itemprop="author">
-            #   {{quote.quote.author|author}}
-            # </small>
-            # <a href="/author/{{quote.quote.author|author}}">(about)</a>
-            # <!-- <a href="/author/{{quote.quote.author|author}}">(about)</a>  -->
-  
-
-    # <!-- <div class="tags">
-    #     Tags:
-    #      {%for tag in quote.tags%}
-    #     <a class="tag" href="/tag/{{tag}}">{{tag}}</a>
-    #     {%endfor%}
-    #   </div>
-
 
 
 
