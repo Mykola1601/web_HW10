@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, AuthorForm
 
 
 def signupuser(request):
@@ -43,8 +43,21 @@ def logoutuser(request):
     return redirect(to='quotes:root')
 
 
+@login_required
+def addquote(request):
+    return redirect(to='users:addquote')
 
 
+@login_required
+def addauthor(request):
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to='quotes:root')
+        else:
+            return render(request, 'users/addauthor.html', {'form': form})
+    return render(request, 'users/addauthor.html', context={"form": AuthorForm()})
 
 
 

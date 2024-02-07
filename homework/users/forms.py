@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django.forms import ModelForm, CharField, TextInput,DateInput
+from quotes.models import Author, Quote
 
 
 class RegisterForm(UserCreationForm):
@@ -27,4 +29,21 @@ class LoginForm(AuthenticationForm):
 
 
 
+class AuthorForm(ModelForm):
+    fullname = CharField(min_length=3, max_length=55, required=True, widget=TextInput())
+    born_date = CharField(min_length=5, max_length=25, required=True, widget=DateInput())
+    born_location = CharField(min_length=5, max_length=65, required=True, widget=TextInput())
+    description = CharField(min_length=10,   required=True, widget=forms.Textarea(attrs={'rows': 10}))
+    
+    class Meta:
+        model = Author
+        fields = ['fullname','born_date', 'born_location', 'description']
+
+
+
+    # quote = models.TextField()
+    # tags = models.ManyToManyField(Tag)
+    # author = models.ForeignKey(Author, on_delete=models.CASCADE, default=None, null=True)
+    # ctreated_at = models.DateField(auto_now_add=True)
+    
 

@@ -2,8 +2,9 @@
 
 {% block content %}
 
+
 <div>
-    <h2>Login</h2>
+    <h2>Author adding</h2>
 </div>
 
 {% if messages %}
@@ -14,17 +15,31 @@
 </div>
 {% endif %}
 
-<form action="{% url 'users:login' %}" method="post">
+
+
+<form action="{% url 'users:addauthor' %}" method="post">
     {% csrf_token %}
     <div>
-        <label> Username:
-            {{ form.username }}
+        <label> Author fullname:
+            {{ form.fullname }}
         </label>
     </div>
 
     <div>
-        <label>Password:
-            {{ form.password }}
+        <label>Author born date:
+            {{ form.born_date }}
+        </label>
+    </div>
+
+    <div>
+        <label>Author born location:
+            {{ form.born_location }}
+        </label>
+    </div>
+
+    <div>
+        <label>Author description:
+            {{ form.description }}
         </label>
     </div>
 
@@ -34,4 +49,6 @@
     </div>
 </form>
 
-{% endblock %}
+
+
+{% endblock content %}
