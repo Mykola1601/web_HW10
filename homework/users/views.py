@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import RegisterForm, LoginForm, AuthorForm
-
+from .forms import RegisterForm, LoginForm, AuthorForm, QuoteForm
+from quotes.models import Tag, Author
 
 def signupuser(request):
     if request.user.is_authenticated:
@@ -18,7 +18,6 @@ def signupuser(request):
             return render(request, 'users/signup.html', context={"form": form})
 
     return render(request, 'users/signup.html', context={"form": RegisterForm()})
-
 
 
 def loginuser(request):
@@ -45,7 +44,32 @@ def logoutuser(request):
 
 @login_required
 def addquote(request):
-    return redirect(to='users:addquote')
+    tags = Tag.objects.all()
+    authors = Author.objects.all()
+
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+
+            new_quote = form.save(commit=False)  # Відкладено збереження 
+
+            # Перевіряємо, чи був обраний автор
+            author_name = request.POST.get("author")
+            if author_name:
+                chosen_author = Author.objects.get(fullname=author_name)
+                new_quote.author = chosen_author
+
+            new_quote.save()  # Зберігаємо цитату
+
+            # Додаємо теги до нової цитати
+            chosen_tags = Tag.objects.filter(name__in=request.POST.getlist("tags"))
+            for tag in chosen_tags:
+                new_quote.tags.add(tag)
+
+            return redirect(to='quotes:root')
+        else:
+            return render(request, 'users/addquote.html', {'authors': authors, 'tags': tags, 'form': form})
+    return render(request, 'users/addquote.html', context={'authors': authors, 'tags': tags, "form": QuoteForm()})
 
 
 @login_required

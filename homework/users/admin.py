@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# from .models import *
+# from quotes.models import Author, Tag, Quote
+
+# admin.site.register(Author)
+# admin.site.register(Tag)
+# admin.site.register(Quote)
+
