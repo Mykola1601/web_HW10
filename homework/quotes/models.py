@@ -8,8 +8,8 @@ class Author(models.Model):
     description = models.TextField()
     ctreated_at = models.DateField(auto_now_add=True)
     
-    # def __str__ (self):
-    #     return f"{self.fullname}"
+    def __str__ (self):
+        return f"{self.fullname}"
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True, null=False)

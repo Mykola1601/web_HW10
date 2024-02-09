@@ -1,0 +1,25 @@
+{% extends "quotes/base.html" %}
+
+{% block content %}
+
+
+<div class="row">
+  <div class="col-md-8">
+    {%for tag in tags%}
+    <div class="top10" itemscope="" itemtype="http://schema.org/CreativeWork">
+      <li>
+        <span class="text" itemprop="text" style="font-weight: bold;">
+          <a href="/tag/{{ tag.name }}" role="button">{{ tag.name }}</a> - - - - {{tag.quote_count }}</span>
+      </li>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+
+<a href="{% url 'tags:toptentags' %}" role="button">Top Ten tags</a>
+

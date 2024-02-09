@@ -14,12 +14,13 @@
     font-style: italic;
 }
 
+
 .tag {
     padding: 2px 5px;
     border-radius: 5px;
     color: white;
     font-size: small;
-    background-color: #7CA3E6;
+    background-color: #3071e2;
 }
 
 .quote small.author {
@@ -48,14 +49,6 @@
 .disabled{
     color: #edbebe;
     cursor: not-allowed;
-}
-
-.add {
-    padding: 2px 5px;
-    border-radius: 5px;
-    color: white;
-    font-size: small;
-    background-color: #7CA3E6;
 }
 
 
