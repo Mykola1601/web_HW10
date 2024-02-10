@@ -11,8 +11,8 @@ def main(request, tag=""):
 
 
 def toptentags(request):
-    tags = Tag.objects.annotate(quote_count=Count('quote')).order_by('-quote_count')[:10] # DESC LIM10
-    return render(request, 'tags/toptentags.html', context={"tags":tags })
+    toptags = Tag.objects.annotate(quote_count=Count('quote')).order_by('-quote_count')[:10] # DESC LIM10
+    return render(request, 'tags/toptentags.html', context={"toptags":toptags })
 
 
 

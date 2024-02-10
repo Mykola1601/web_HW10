@@ -16,8 +16,8 @@
 
 
 .tag {
-    padding: 2px 5px;
-    border-radius: 5px;
+    padding: 5px 5px;
+    border-radius: 6px;
     color: white;
     font-size: small;
     background-color: #3071e2;
@@ -50,5 +50,32 @@
     color: #edbebe;
     cursor: not-allowed;
 }
+
+.container10 {
+  position: fixed;
+  top: 50px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+}
+
+.tags-box {
+  padding: 20px;
+}
+
+.add {
+    
+    font-weight: bold;
+    color: #3677E8;
+}
+
+.login {
+
+  position: fixed;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+
+}
+
+
+
 
 

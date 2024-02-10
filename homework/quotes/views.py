@@ -18,4 +18,3 @@ def main(request, page=1):
 
 
 
-
