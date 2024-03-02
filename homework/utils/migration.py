@@ -1,6 +1,5 @@
 import os 
 import django
-
 from quotes.utils import get_mongodb
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "homework.settings")
@@ -9,7 +8,7 @@ django.setup()
 from quotes.models import Quote, Tag, Author
 
 
-db = get_mongodb()
+db =  get_mongodb()
 
 authors = db.author.find()
 for author in authors:
